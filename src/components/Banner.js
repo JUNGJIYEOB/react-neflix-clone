@@ -32,9 +32,6 @@ export default function Banner(){
         }
        
     };
-    function aaaa(){
-
-    }
 
     useEffect(() => {
         fetchData();
