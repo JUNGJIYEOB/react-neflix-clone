@@ -1,8 +1,12 @@
 import React ,{ useState, useEffect }from 'react';
+import { useNavigate } from "react-router-dom";
 import "./Nav.css"
 
 export default function Nav(){
     const [show, setShow] = useState(false);
+    const [searchValue, setSearchValue] = useState("");
+    const navigate = useNavigate();
+
     useEffect(() => {
         window.addEventListener("scroll", () => {
             console.log("window.scrollY", window.scrollY);
@@ -18,6 +22,11 @@ export default function Nav(){
         };
     }, []);
 
+    const handleChange = (e) => {
+        setSearchValue(e.target.value);
+        navigate(`/search?q=${e.target.value}`);
+    };
+
     //show 가 true 일때 css nav__black 적용 이라는 의미
     return (<nav className={`nav ${show && "nav__black"} `}>
         <img
@@ -26,6 +35,15 @@ export default function Nav(){
             className="nav__logo"
             onClick={()=>window.location.reload()}
         />
+
+        <input
+            value={searchValue}
+            onChange={handleChange}
+            className="nav__input"
+            type="text"
+            placeholder="영화를 검색해주세요."
+        />
+
         <img
             alt="User logged"
             src="https://scontent-gmp1-1.xx.fbcdn.net/v/t39.30808-1/302707731_621394982820133_5846964301414567292_n.jpg?stp=dst-jpg_p200x200&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_ohc=AgfG1rLRIt0AX9Y6kHo&_nc_oc=AQngByguACEA_8EdTz5MWz3tFuI4OmXxDRAo42x_WQBdBpryRmX1u4tYsrbeLT3i_DA&_nc_ht=scontent-gmp1-1.xx&oh=00_AfBsh6rT8tvNyzZ9cbMHGW7pnDcVCg67x1Om180bEZ_2cg&oe=6532BC0E"
