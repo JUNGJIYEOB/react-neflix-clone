@@ -26,13 +26,15 @@ export default function Banner(){
                 params: { append_to_response: "videos" },
             });
             setMovie(movieDetail);
-            console.log('movieDetail : ',movieDetail)
+
         }catch(e){
             alert("관리자에게 문의 바랍니다.")
         }
        
     };
+    function aaaa(){
 
+    }
 
     useEffect(() => {
         fetchData();
@@ -41,7 +43,8 @@ export default function Banner(){
     const truncate = (str, n) => {
         return str?.length > n ? str.substr(0, n - 1) + "..." : str;
     };
-    console.log('movie',movie);
+
+
 
     if (!isClicked) {
         return (
